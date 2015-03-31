@@ -100,9 +100,6 @@ class Window(Frame):
         
     def quit(self):  
         exit() 
-    
-    def secret(self):
-        print("Have a nice day!!!")
         
     def urlSearch(self, url, logFile, sText):
         
@@ -135,6 +132,18 @@ class Window(Frame):
                 f.write("\n")
                 f.write("\n")
                 
+                """
+                # these do the same thing
+                data = soup.find(text=sText)
+                print("data = %s" %data)
+                if data == sText:
+                    # print("in if test")
+                    #text = soup.getText(sText)
+                    print(data)
+                    count += 1  # update the counter
+                    print("found text")
+                """
+                
                 data = []
                 data = soup.find_all(text=sText)
                 print("data = %s" %data)
@@ -143,10 +152,11 @@ class Window(Frame):
                     
                     if data[i] == sText:
                         # print("in if test")
-                        #text = soup.getText(sText)
                         print(data[i])
                         count += 1  # update the counter
                         print("found text")
+                        
+                
                     
                 print("Text string found %i times" % count)
                 f.write("Text string found %i times" % count)
